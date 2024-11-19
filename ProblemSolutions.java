@@ -1,6 +1,6 @@
 /******************************************************************
  *
- *   YOUR NAME / SECTION NUMBER
+ *   Jung Lee / 001
  *
  *   This java file contains the problem solutions for the methods selectionSort,
  *   mergeSortDivisibleByKFirst, asteroidsDestroyed, and numRescueCanoes methods.
@@ -42,6 +42,26 @@ public class ProblemSolutions {
             // "SELECTION SORT" ALGORITHM.
             // DO NOT FORGET TO ADD YOUR NAME / SECTION ABOVE
 
+            // Find the index of the minimum or maximum element based on order
+            int targetIndex = i;
+            for (int j = i + 1; j < n; j++) {
+                if (ascending) {
+                    if (values[j] < values[targetIndex]) {
+                        targetIndex = j;
+                    }
+                } else {
+                    if (values[j] > values[targetIndex]) {
+                        targetIndex = j;
+                    }
+                }
+            }
+
+             // Swap the found minimum/maximum element with the current element
+            if (targetIndex != i) {
+                int temp = values[targetIndex];
+                values[targetIndex] = values[i];
+                values[i] = temp;
+            }
         }
 
     } // End class selectionSort
