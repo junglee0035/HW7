@@ -122,7 +122,6 @@ public class ProblemSolutions {
         // TO CODE WITH A SPACE COMPLEXITY OF O(N LOG N), WHICH IS FINE FOR PURPOSES
         // OF THIS PROGRAMMING EXERCISES.
 
-        return;
 
     }
 
@@ -176,7 +175,24 @@ public class ProblemSolutions {
 
         // YOUR CODE GOES HERE, CONSIDER USING ARRAYS.SORT()
 
-        return false;
+        Arrays.sort(asteroids);
+
+        // Set initial result as true
+        boolean canDestroyAll = true;
+
+         // Iterate through asteroids array
+        for (int asteroid : asteroids) {
+
+            // Check if the planet can withstand the asteroid
+            if (mass >= asteroid) {
+                mass += asteroid;
+            } else {
+                //Change result to false
+                canDestroyAll = false;
+            }
+        }
+
+        return canDestroyAll;
 
     }
 
@@ -213,8 +229,26 @@ public class ProblemSolutions {
     public static int numRescueSleds(int[] people, int limit) {
 
         // YOUR CODE GOES HERE, CONSIDER USING ARRAYS.SORT
+        Arrays.sort(people);
 
-        return -1;
+        int left = 0; 
+        int right = people.length - 1;
+        int sledCount = 0;
+
+        // While loop to assign people to sleds which continues as long as left does not pass right
+        while (left <= right) {
+            // Check if the lightest person and the heaviest person's weight is under the limit
+            if (people[left] + people[right] <= limit) {
+                left++;
+            }
+
+            // Regardless if sharing a sled or not, the right person will go on a sled so move right inward by decrementing 
+            right--;
+            // Increment sledCount
+            sledCount++;
+        }
+        
+        return sledCount;
 
     }
 
